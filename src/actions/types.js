@@ -1,0 +1,2 @@
+export const CHANGE_LEVEL = 'CHANGE_LEVEL';
+export const UPDATE_ANSWER = 'UPDATE_ANSWER';

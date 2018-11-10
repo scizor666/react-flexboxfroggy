@@ -1,0 +1,12 @@
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  &__title {
+    display: block;
+    margin: 0;
+    text-transform: uppercase;
+    font-family: 'Fredoka One', cursive;
+    font-size: 28px;
+  }
+}
