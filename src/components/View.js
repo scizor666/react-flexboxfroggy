@@ -18,13 +18,15 @@ const View = ({board, style, selector, pondPreset, answer}) => {
         }
     });
 
-    const renderLilyPads = board => board.map((color, i) => <div key={i} className={`lilypad--${color}`}>
-        <div className={`lilypad__bg--${color}`}/>
-    </div>);
+    const renderLilyPads = board => board.map((color, i) =>
+        <div key={i} className={`lilypad lilypad--${color}`} data-color={color}>
+            <div className={`lilypad__bg--${color}`}/>
+        </div>);
 
-    const renderFrogs = board => board.map((color, i) => <div key={i} className={`frog--${color}`}>
-        <div className={`frog__bg--${color}`}/>
-    </div>);
+    const renderFrogs = board => board.map((color, i) =>
+        <div key={i} className={`frog frog--${color}`} data-color={color}>
+            <div className={`frog__bg--${color}`}/>
+        </div>);
 
     return <section className='view'>
         <div className='view__board'>
