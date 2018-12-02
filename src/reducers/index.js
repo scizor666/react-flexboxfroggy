@@ -3,8 +3,8 @@ import LevelReducer from './LevelReducer'
 import AnswerReducer from './AnswerReducer'
 
 const rootReducer = combineReducers({
-    level: LevelReducer,
-    answer: AnswerReducer
+    answer: AnswerReducer,
+    level: LevelReducer
 });
 
 export default rootReducer;

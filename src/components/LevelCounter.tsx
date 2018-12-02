@@ -1,9 +1,15 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {changeLevel} from '../actions'
+import {changeLevel} from '../actions';
+import ILevel from '../types/ILevel';
 
+interface IProps {
+    current: number,
+    max: number,
+    changeLevel: Function,
+}
 
-const LevelCounter = props => {
+const LevelCounter = (props : IProps) => {
     const isFirstLevel = props.current === 1;
     const isLastLevel = props.current === props.max;
 
@@ -17,6 +23,6 @@ const LevelCounter = props => {
     </div>;
 };
 
-const mapStateToProps = ({level}) => ({...level});
+const mapStateToProps = ({level}: {level: ILevel}) => ({...level});
 
 export default connect(mapStateToProps, {changeLevel})(LevelCounter);

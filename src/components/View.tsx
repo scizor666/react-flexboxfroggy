@@ -1,9 +1,12 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {connect} from 'react-redux';
-import {styleStringFromObject, styleObjectWithCamelizedKeys} from '../utils/CSSUtils';
+// import ILevel from "../types/ILevel";
+import {styleObjectWithCamelizedKeys, styleStringFromObject} from '../utils/CSSUtils';
 
-const View = ({board, style, selector, pondPreset, answer}) => {
-    useEffect(() => {
+// type IProps = ILevel & { pondPreset: string, answer: string };
+
+const View = ({board, style, selector, pondPreset, answer}: any) => {
+    React.useEffect(() => {
         document.querySelectorAll('.view__lilypads > *[style],.view__frogs > *[style]')
             .forEach(e => e.removeAttribute('style'));
 
@@ -11,19 +14,19 @@ const View = ({board, style, selector, pondPreset, answer}) => {
             document.querySelectorAll(`.view__lilypads ${selector}`)
                 .forEach(e => e.setAttribute('style', styleStringFromObject(style)));
 
-            document.querySelector('#pond').setAttribute('style', pondPreset);
+            document.querySelector('#pond')!.setAttribute('style', pondPreset);
             document.querySelectorAll(`#pond ${selector}`).forEach(e => e.setAttribute('style', answer));
         } else {
-            document.querySelector('#pond').setAttribute('style', pondPreset + answer);
+            document.querySelector('#pond')!.setAttribute('style', pondPreset + answer);
         }
     });
 
-    const renderLilyPads = board => board.map((color, i) =>
+    const renderLilyPads = (board: string[]) => board.map((color, i) =>
         <div key={i} className={`lilypad lilypad--${color}`} data-color={color}>
             <div className={`lilypad__bg--${color}`}/>
         </div>);
 
-    const renderFrogs = board => board.map((color, i) =>
+    const renderFrogs = (board: string[]) => board.map((color, i) =>
         <div key={i} className={`frog frog--${color}`} data-color={color}>
             <div className={`frog__bg--${color}`}/>
         </div>);
@@ -40,9 +43,10 @@ const View = ({board, style, selector, pondPreset, answer}) => {
 };
 
 const mapStateToProps =
-    ({level: {board, style, selector, prependCode}, answer}) => ({
-        board, style, selector, answer,
-        pondPreset: prependCode.match(/(?:{([^}]+))/)[1] // this solution is rather controversial..
+    ({level: {board, style, selector, prependCode}, answer} : any) => ({
+        answer: answer ? answer : '', board,
+        pondPreset: prependCode.match(/(?:{([^}]+))/)![1],
+        selector, style// this solution is rather controversial..
     });
 
 export default connect(mapStateToProps)(View);
