@@ -45,5 +45,5 @@ app.use( express.static( path.resolve( __dirname, "../build" ) ) );
 // use injected index.html for unknown resources
 app.get('*', indexAction);
 
-app.listen(3000);
+app.listen(process.env.PORT|| 3000);
 
