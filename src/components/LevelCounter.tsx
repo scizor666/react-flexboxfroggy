@@ -1,10 +1,11 @@
 import React from 'react';
 import {RouteComponentProps, withRouter} from 'react-router-dom';
 import {LevelContext} from '../App';
+import ILevel from "../types/ILevel";
 
 const LevelCounter = (props: RouteComponentProps) => {
 
-    return <LevelContext.Consumer>{(level: any) => {
+    return <LevelContext.Consumer>{(level: ILevel) => {
         const isFirstLevel = level.current === 1;
         const isLastLevel = level.current === level.max;
 

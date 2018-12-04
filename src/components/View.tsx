@@ -1,10 +1,10 @@
 import React, {useEffect} from 'react';
-// import ILevel from "../types/ILevel";
+import ILevel from "../types/ILevel";
 import {styleObjectWithCamelizedKeys, styleStringFromObject} from '../utils/CSSUtils';
 
-// type IProps = ILevel & { pondPreset: string, answer: string };
+type IProps = ILevel & { pondPreset: string, answer: string };
 
-const View = ({board, style, selector, pondPreset, answer}: any) => {
+const View = ({board, style, selector, pondPreset, answer}: IProps) => {
     useEffect(() => {
         document.querySelectorAll('.view__lilypads > *[style],.view__frogs > *[style]')
             .forEach(e => e.removeAttribute('style'));

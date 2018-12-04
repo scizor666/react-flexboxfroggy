@@ -5,10 +5,10 @@ interface ILevel {
     max: number,
     instructions: IInstructions,
     prependCode: string,
-    answerHeight: string,
-    style: object,
+    answerHeight: number,
+    style: any,
     board: string[],
-    selector: string
+    selector?: string
 }
 
 export default ILevel;

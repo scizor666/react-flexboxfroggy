@@ -5,11 +5,12 @@ import {changeLevel} from './actions';
 import './App.scss';
 import SideBar from "./components/SideBar";
 import ViewWrapper from "./containers/ViewWrapper";
+import {getLevelData} from "./store/configureStore";
 import ILevel from "./types/ILevel";
 
 type IProps = RouteComponentProps & { level: ILevel, changeLevel: Function }
 
-export const LevelContext = React.createContext({});
+export const LevelContext = React.createContext((getLevelData(0)as ILevel));
 
 class App extends Component<IProps> {
 

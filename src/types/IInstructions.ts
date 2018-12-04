@@ -1,5 +1,35 @@
 interface IInstructions {
-    en : string
+    en : string,
+    ro: string,
+    bg: string,
+    de: string,
+    'pt-br': string,
+    es: string,
+    fr: string,
+    ru: string,
+    fa: string,
+    "zh-cn": string,
+    "zh-tw": string,
+    tr: string,
+    it: string,
+    ko: string,
+    lt: string,
+    vi: string,
+    pl: string,
+    cs: string,
+    ja: string,
+    hu: string,
+    eo: string,
+    sv: string,
+    uk: string,
+    hi: string,
+    sr: string,
+    nl: string,
+    ta: string,
+    ml: string,
+    el: string,
+    mk: string,
+    lv: string
 }
 
 export default IInstructions;
