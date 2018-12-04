@@ -29,7 +29,7 @@ const indexAction = (req: any, res: any) => {
 
         // render the app as a string
         const html = ReactDOMServer.renderToString(<Provider store={store}>
-            <StaticRouter context={{}}>
+            <StaticRouter location={req.url} context={{}}>
                 <Route path={'/level/:id'} component={App}/>
             </StaticRouter>
         </Provider>);
