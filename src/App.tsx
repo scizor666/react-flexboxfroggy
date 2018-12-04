@@ -1,22 +1,33 @@
 import React, {Component} from 'react';
-import {Provider} from "react-redux";
-import {createStore} from 'redux';
+import {connect} from "react-redux";
+import {RouteComponentProps} from "react-router";
+import {changeLevel} from './actions';
 import './App.scss';
 import SideBar from "./components/SideBar";
-import View from "./components/View";
-import reducers from './reducers';
+import ViewWrapper from "./containers/ViewWrapper";
+import ILevel from "./types/ILevel";
 
-const store = createStore(reducers);
+type IProps = RouteComponentProps & { level: ILevel, changeLevel: Function }
 
-class App extends Component {
+export const LevelContext = React.createContext({});
+
+class App extends Component<IProps> {
+
+    public componentWillUpdate(props: IProps) {
+        const nextLevel = Number((props.match.params as any).id);
+        if (nextLevel !== props.level.current) {
+            this.props.changeLevel(nextLevel);
+        }
+    }
+
     public render() {
-        return <Provider store={store}>
-            <>
-                <SideBar/>
-                <View/>
-            </>
-        </Provider>
+        return <LevelContext.Provider value={this.props.level}>
+            <SideBar {...this.props.level}/>
+            <ViewWrapper/>
+        </LevelContext.Provider>
     }
 }
 
-export default App;
+const mapStateToProps = ({level}: { level: ILevel }) => ({level});
+
+export default connect(mapStateToProps, {changeLevel})(App);

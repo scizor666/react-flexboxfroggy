@@ -1,19 +1,14 @@
 import _ from 'lodash';
 import React from 'react';
-import {connect} from 'react-redux';
-import {changeLevel, updateAnswer} from '../actions';
+import {RouteComponentProps} from "react-router";
 import ILevel from "../types/ILevel";
 
-interface IProps {
-    level: number,
+type IProps = RouteComponentProps & ILevel & {
     answer: string,
-    prependCode: string,
-    answerHeight: string,
-    changeLevel: Function,
     updateAnswer: Function
 }
 
-const Editor = ({prependCode, answerHeight, updateAnswer, level, changeLevel, answer}: IProps) => {
+const Editor = ({prependCode, answerHeight, updateAnswer, current, answer, history}: IProps) => {
 
     const renderLineNumbers = () => <div className='editor__lineNumbers'>
         {_.range(1, 11).map(i => <React.Fragment key={i}>{i}<br/></React.Fragment>)}
@@ -41,7 +36,7 @@ const Editor = ({prependCode, answerHeight, updateAnswer, level, changeLevel, an
             }
         });
         if (isSolved) {
-            changeLevel(level + 1);
+            history.push(`/level/${current + 1}`);
             updateAnswer('');
         } // handle last level
     };
@@ -65,6 +60,4 @@ const Editor = ({prependCode, answerHeight, updateAnswer, level, changeLevel, an
     </div>;
 };
 
-const mapStateToProps = ({level: {current}, answer}: { level: ILevel, answer: string }) => ({level: current, answer});
-
-export default connect(mapStateToProps, {updateAnswer, changeLevel})(Editor);
+export default Editor;

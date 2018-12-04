@@ -1,28 +1,25 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {changeLevel} from '../actions';
-import ILevel from '../types/ILevel';
+import {RouteComponentProps, withRouter} from 'react-router-dom';
+import {LevelContext} from '../App';
 
-interface IProps {
-    current: number,
-    max: number,
-    changeLevel: Function,
-}
+const LevelCounter = (props: RouteComponentProps) => {
 
-const LevelCounter = (props : IProps) => {
-    const isFirstLevel = props.current === 1;
-    const isLastLevel = props.current === props.max;
+    return <LevelContext.Consumer>{(level: any) => {
+        const isFirstLevel = level.current === 1;
+        const isLastLevel = level.current === level.max;
 
-    const handleLevelDecrement = () => props.changeLevel(isFirstLevel ? 1 : props.current - 1);
-    const handleLevelIncrement = () => props.changeLevel(isLastLevel ? props.max : props.current + 1);
+        const handleLevelDecrement = () => props.history.push(`/level/${isFirstLevel ? 1 : level.current - 1}`);
+        const handleLevelIncrement = () => props.history.push(`/level/${isLastLevel ? level.max : level.current + 1}`);
 
-    return <div className='levelCounter'>
-        <span className={`levelCounter__left${isFirstLevel ? ' u-disabled' : ''}`} onClick={handleLevelDecrement}>◀</span>
-        <span className='levelCounter__label'>Level {props.current} of {props.max} ▾</span>
-        <span className={`levelCounter__right${isLastLevel ? ' u-disabled' : ''}`} onClick={handleLevelIncrement}>▶</span>
-    </div>;
+        return <div className='levelCounter'>
+        <span className={`levelCounter__left${isFirstLevel ? ' u-disabled' : ''}`}
+              onClick={handleLevelDecrement}>◀</span>
+            <span className='levelCounter__label'>Level {level.current} of {level.max} ▾</span>
+            <span className={`levelCounter__right${isLastLevel ? ' u-disabled' : ''}`}
+                  onClick={handleLevelIncrement}>▶</span>
+        </div>
+    }}
+    </LevelContext.Consumer>;
 };
 
-const mapStateToProps = ({level}: {level: ILevel}) => ({...level});
-
-export default connect(mapStateToProps, {changeLevel})(LevelCounter);
+export default withRouter(LevelCounter);

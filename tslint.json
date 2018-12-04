@@ -9,6 +9,7 @@
   },
   "rules": {
     "no-shadowed-variable": false,
-    "ban-types": false
+    "ban-types": false,
+    "interface-name": false
   }
 }

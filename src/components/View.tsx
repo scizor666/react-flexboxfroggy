@@ -1,12 +1,11 @@
-import React from 'react';
-import {connect} from 'react-redux';
+import React, {useEffect} from 'react';
 // import ILevel from "../types/ILevel";
 import {styleObjectWithCamelizedKeys, styleStringFromObject} from '../utils/CSSUtils';
 
 // type IProps = ILevel & { pondPreset: string, answer: string };
 
 const View = ({board, style, selector, pondPreset, answer}: any) => {
-    React.useEffect(() => {
+    useEffect(() => {
         document.querySelectorAll('.view__lilypads > *[style],.view__frogs > *[style]')
             .forEach(e => e.removeAttribute('style'));
 
@@ -42,11 +41,4 @@ const View = ({board, style, selector, pondPreset, answer}: any) => {
     </section>
 };
 
-const mapStateToProps =
-    ({level: {board, style, selector, prependCode}, answer} : any) => ({
-        answer: answer ? answer : '', board,
-        pondPreset: prependCode.match(/(?:{([^}]+))/)![1],
-        selector, style// this solution is rather controversial..
-    });
-
-export default connect(mapStateToProps)(View);
+export default View;
