@@ -8,13 +8,13 @@ type IProps = RouteComponentProps & ILevel & {
     updateAnswer: Function
 }
 
-const Editor = ({prependCode, answerHeight, updateAnswer, current, answer, history}: IProps) => {
+const Editor = ({max, prependCode, answerHeight, updateAnswer, current, answer, history}: IProps) => {
 
     const renderLineNumbers = () => <div className='editor__lineNumbers'>
         {_.range(1, 11).map(i => <React.Fragment key={i}>{i}<br/></React.Fragment>)}
     </div>;
 
-    const handleOnChange = (e : React.FormEvent<HTMLTextAreaElement>) => updateAnswer(e.currentTarget.value);
+    const handleOnChange = (e: React.FormEvent<HTMLTextAreaElement>) => updateAnswer(e.currentTarget.value);
 
     const check = () => {
         const frogs: any = {};
@@ -36,12 +36,13 @@ const Editor = ({prependCode, answerHeight, updateAnswer, current, answer, histo
             }
         });
         if (isSolved) {
-            history.push(`/level/${current + 1}`);
+            const nextLevel = current + 1;
+            history.push(nextLevel > max ? '/level/win' : `/level/${nextLevel}`);
             updateAnswer('');
-        } // handle last level
+        }
     };
 
-    return <div className='editor'>
+    return (current !== 'win') ? <div className='editor'>
         {renderLineNumbers()}
         <div className='editor__css'>
             <div className='editor__code'>
@@ -57,7 +58,7 @@ const Editor = ({prependCode, answerHeight, updateAnswer, current, answer, histo
             <button onClick={check} className='editor__next'>Next</button>
         </div>
 
-    </div>;
+    </div> : null;
 };
 
 export default Editor;

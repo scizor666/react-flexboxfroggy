@@ -1,5 +1,5 @@
 import {createStore} from "redux";
-import {levels} from '../data/levels';
+import {levels, levelWin} from '../data/levels';
 import reducers from '../reducers/index';
 
 function answerHeight(level: any) {
@@ -25,6 +25,19 @@ export function getLevelData(index: number) {
         prependCode: levels[index].before,
         selector: levels[index].selector,
         style: levels[index].style
+    };
+}
+
+export function winData() {
+    return {
+        answerHeight: answerHeight(levelWin),
+        board: levelBoard(levelWin),
+        current: levelWin.name,
+        instructions: levelWin.instructions,
+        max: levels.length,
+        prependCode: levelWin.before,
+        selector: '',
+        style: levelWin.style
     };
 }
 

@@ -1033,6 +1033,6 @@ export const levelWin = {
     board: 'gyrgyrgyrgyrgyrgyrgyrgyrg',
     classes: {'#pond, #background': 'wrap'},
     style: {},
-    before: "#pond {\n  display: flex;\n",
+    before: "#pond {\n  display: flex;\n  flex-wrap: wrap;\n",
     after: "}"
 };
