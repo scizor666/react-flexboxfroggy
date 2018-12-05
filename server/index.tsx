@@ -20,7 +20,7 @@ const indexAction = (req: any, res: any) => {
 
     // configure store by given level id
     const levelId = parseInt(req.params.id, 10) - 1 || 0;
-    const store = configureStore({answer: '', level: getLevelData(levelId)});
+    const store = configureStore({level: getLevelData(levelId)});
 
     fs.readFile(filePath, 'utf8', (err: any, htmlData: any) => {
         if (err) {

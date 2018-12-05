@@ -8,7 +8,7 @@ interface ILevel {
     answerHeight: number,
     style: any,
     board: string[],
-    selector: string | undefined
+    selector?: string,
 }
 
 export default ILevel;

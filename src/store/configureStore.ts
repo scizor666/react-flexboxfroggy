@@ -1,6 +1,7 @@
 import {createStore} from "redux";
 import {levels, levelWin} from '../data/levels';
 import reducers from '../reducers/index';
+import ILevel from "../types/ILevel";
 
 function answerHeight(level: any) {
     return Object.keys(level.style).length * 20;
@@ -15,7 +16,7 @@ function levelBoard(level: any) {
     return level.board.split('').map((e: any) => colors[e]);
 }
 
-export function getLevelData(index: number) {
+export function getLevelData(index: number): ILevel {
     return {
         answerHeight: answerHeight(levels[index]),
         board: levelBoard(levels[index]),
@@ -28,7 +29,7 @@ export function getLevelData(index: number) {
     };
 }
 
-export function winData() {
+export function winData(): ILevel {
     return {
         answerHeight: answerHeight(levelWin),
         board: levelBoard(levelWin),
@@ -36,7 +37,6 @@ export function winData() {
         instructions: levelWin.instructions,
         max: levels.length,
         prependCode: levelWin.before,
-        selector: '',
         style: levelWin.style
     };
 }

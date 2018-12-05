@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import ILevel from "../types/ILevel";
 import {styleObjectWithCamelizedKeys, styleStringFromObject} from '../utils/CSSUtils';
 
-type IProps = ILevel & { pondPreset: string, answer: string };
+type IProps = ILevel & { answer: string, pondPreset: string };
 
 const View = ({board, style, selector, pondPreset, answer}: IProps) => {
     useEffect(() => {

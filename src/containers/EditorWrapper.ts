@@ -2,8 +2,8 @@ import {connect} from "react-redux";
 import {withRouter} from "react-router";
 import {updateAnswer} from '../actions';
 import Editor from '../components/Editor';
-import ILevel from "../types/ILevel";
+import IStore from "../types/IStore";
 
-const mapStateToProps = ({answer, level}: { answer: string, level: ILevel }) => ({answer, ...level});
+const mapStateToProps = ({level, answers}: IStore) => ({...level, answer: answers[level.current] || ''});
 
 export default connect(mapStateToProps, {updateAnswer})(withRouter(Editor));

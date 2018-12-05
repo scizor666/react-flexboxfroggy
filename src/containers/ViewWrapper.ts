@@ -1,10 +1,11 @@
 import {connect} from 'react-redux';
 import View from '../components/View';
-import ILevel from "../types/ILevel";
+import IStore from "../types/IStore";
 
 const mapStateToProps =
-    ({level, answer}: { level: ILevel, answer: string }) => ({
-        ...level, answer,
+    ({level, answers}: IStore) => ({
+        ...level,
+        answer: answers[level.current] || '',
         pondPreset: level.prependCode.match(/(?:{([^}]+))/)![1]// this solution is rather controversial..
     });
 

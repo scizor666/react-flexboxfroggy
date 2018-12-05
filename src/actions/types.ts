@@ -1,3 +1,3 @@
-export const CHANGE_LEVEL = 'CHANGE_LEVEL';
-export const UPDATE_ANSWER = 'UPDATE_ANSWER';
-export const WIN_GAME = 'WIN_GAME';
+export const CHANGE_LEVEL = '@actions/change-level';
+export const UPDATE_ANSWER = '@actions/update-answer';
+export const WIN_GAME = '@actions/win-game';

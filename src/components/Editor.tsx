@@ -5,7 +5,7 @@ import ILevel from "../types/ILevel";
 
 type IProps = RouteComponentProps & ILevel & {
     answer: string,
-    updateAnswer: Function
+    updateAnswer: (level: number, answer: string) => any;
 }
 
 const Editor = ({max, prependCode, answerHeight, updateAnswer, current, answer, history}: IProps) => {
@@ -14,7 +14,7 @@ const Editor = ({max, prependCode, answerHeight, updateAnswer, current, answer, 
         {_.range(1, 11).map(i => <React.Fragment key={i}>{i}<br/></React.Fragment>)}
     </div>;
 
-    const handleOnChange = (e: React.FormEvent<HTMLTextAreaElement>) => updateAnswer(e.currentTarget.value);
+    const handleOnChange = (e: React.FormEvent<HTMLTextAreaElement>) => updateAnswer(current, e.currentTarget.value);
 
     const check = () => {
         const frogs: any = {};
@@ -38,7 +38,6 @@ const Editor = ({max, prependCode, answerHeight, updateAnswer, current, answer, 
         if (isSolved) {
             const nextLevel = current + 1;
             history.push(nextLevel > max ? '/level/win' : `/level/${nextLevel}`);
-            updateAnswer('');
         }
     };
 

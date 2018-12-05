@@ -3,7 +3,7 @@ import AnswerReducer from './AnswerReducer'
 import LevelReducer from './LevelReducer'
 
 const rootReducer = combineReducers({
-    answer: AnswerReducer,
+    answers: AnswerReducer,
     level: LevelReducer
 });
 
