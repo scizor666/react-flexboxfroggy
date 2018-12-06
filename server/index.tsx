@@ -39,7 +39,7 @@ const indexAction = (req: any, res: any) => {
             htmlData.replace(
                 '<div id="root"></div>',
                 `<div id="root">${html}</div>`
-            ).replace('"__SERVER_REDUX_STATE__"', reduxState)
+            ).replace('window.REDUX_STATE', `window.REDUX_STATE=${reduxState}`)
         );
     });
 };
