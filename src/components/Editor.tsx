@@ -51,7 +51,7 @@ const Editor = ({max, prependCode, answerHeight, updateAnswer, current, answer, 
                           style={{height: `${answerHeight}px`}}
                           onChange={handleOnChange}
                           value={answer}
-                />
+                >{answer}</textarea>
                 <div>}</div>
             </div>
             <button onClick={check} className='editor__next'>Next</button>
