@@ -5,12 +5,10 @@ import {changeLevel, winGame} from './actions';
 import './App.scss';
 import SideBar from "./components/SideBar";
 import ViewWrapper from "./containers/ViewWrapper";
-import {getLevelData} from "./store/configureStore";
+import LevelContext from './context/LevelContext';
 import ILevel from "./types/ILevel";
 
 type IProps = RouteComponentProps & { level: ILevel, changeLevel: Function, winGame: Function }
-
-export const LevelContext = React.createContext((getLevelData(0)as ILevel));
 
 class App extends Component<IProps> {
 

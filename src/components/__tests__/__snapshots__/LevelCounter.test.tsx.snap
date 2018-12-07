@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Level Counter renders level values as 0 of 90 1`] = `
+<div
+  className="levelCounter"
+>
+  <span
+    className="levelCounter__left"
+    onClick={[Function]}
+  >
+    ◀
+  </span>
+  <span
+    className="levelCounter__label"
+  >
+    Level 
+    0
+     of 
+    90
+     ▾
+  </span>
+  <span
+    className="levelCounter__right"
+    onClick={[Function]}
+  >
+    ▶
+  </span>
+</div>
+`;
+
+exports[`Level Counter renders level values as 1 of 24 1`] = `
+<div
+  className="levelCounter"
+>
+  <span
+    className="levelCounter__left u-disabled"
+    onClick={[Function]}
+  >
+    ◀
+  </span>
+  <span
+    className="levelCounter__label"
+  >
+    Level 
+    1
+     of 
+    24
+     ▾
+  </span>
+  <span
+    className="levelCounter__right"
+    onClick={[Function]}
+  >
+    ▶
+  </span>
+</div>
+`;

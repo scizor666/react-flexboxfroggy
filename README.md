@@ -2,7 +2,7 @@ React Flexbox Froggy
 =
 
 Partial clone of the nice educational game [flexboxfroggy](https://github.com/thomaspark/flexboxfroggy/)
-
+[![Build Status](https://travis-ci.org/scizor666/react-flexboxfroggy.svg?branch=master)](https://travis-ci.org/scizor666/react-flexboxfroggy)
 
 this app bootstraped with [create-react-app](https://github.com/facebook/create-react-app) and uses Server-Side Rendering.
 

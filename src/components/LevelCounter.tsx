@@ -1,6 +1,6 @@
 import React from 'react';
 import {RouteComponentProps, withRouter} from 'react-router-dom';
-import {LevelContext} from '../App';
+import LevelContext from '../context/LevelContext';
 import ILevel from "../types/ILevel";
 
 const LevelCounter = (props: RouteComponentProps) => {

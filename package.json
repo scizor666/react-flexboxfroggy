@@ -21,6 +21,8 @@
     "redux": "^4.0.1"
   },
   "devDependencies": {
+    "@types/enzyme": "^3.1.15",
+    "@types/enzyme-adapter-react-16": "^1.0.3",
     "@types/express": "^4.16.0",
     "@types/jest": "^23.3.10",
     "@types/lodash": "^4.14.118",
@@ -29,8 +31,12 @@
     "@types/react-dom": "^16.0.11",
     "@types/react-redux": "^6.0.10",
     "@types/react-router-dom": "^4.3.1",
+    "@types/react-test-renderer": "^16.0.3",
+    "enzyme": "^3.7.0",
+    "enzyme-adapter-react-16": "^1.7.0",
     "node-sass": "^4.10.0",
     "nodemon": "^1.18.7",
+    "react-test-renderer": "^16.6.3",
     "typescript": "^3.2.1"
   },
   "scripts": {
@@ -49,7 +55,10 @@
     "not op_mini all"
   ],
   "nodemonConfig": {
-    "ignore": ["build", "server"],
+    "ignore": [
+      "build",
+      "server"
+    ],
     "exec": "yarn",
     "ext": "js,jsx,tsx,ts,json,scss",
     "verbose": true
